@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet"
+          asp-href-include="/lib/twitter-bootstrap/css/*.css"
+          asp-href-exclude="**/*-reboot*,**/*-grid*" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css" />
+    <title>QualityBook</title>
+</head>
+<body>
+    <div class="navbar navbar-inverse bg-inverse" role="navigation">
+        <div class="row">
+            <a class="col navbar-brand" href="#">QualityBook</a>
+            <a href="/page1">
+            <img src="~/images/logo.jpg" alt=" BookStore Logo" align="right"></a>
+            <div class="col-4 text-right">
+                @await Component.InvokeAsync("CartSummary")
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row m-1 p-1">
+        <div id="categories" class="col-3">
+            @await Component.InvokeAsync("NavigationMenu")
+        </div>
+        <div class="col-9">
+            @RenderBody()
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2019 - QualityBook</p>
+        </footer>
+    </div>
+</body>
+</html>
